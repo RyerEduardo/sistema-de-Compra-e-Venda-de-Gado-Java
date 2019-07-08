@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listaDeVendas" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef324ec8-ab75-4bd2-a159-77821367cd0e">
+	<property name="ireport.zoom" value="1.3310000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="v" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT venda.nome,venda.telefone, venda.endereco,bovino.valorVenda,bovino.dataVenda, raca.nome as nomeraca FROM bovino,raca,venda  WHERE bovino.vendido = $P{v} and bovino.idUser = $P{id} AND bovino.idRaca = raca.id and bovino.id = venda.idBovino]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorVenda" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataVenda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeraca" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<image>
+				<reportElement x="16" y="0" width="172" height="106" uuid="cf84b522-d494-4d35-ae1f-096cfbfbfd8c"/>
+				<imageExpression><![CDATA["C:\\Users\\brird\\Documents\\NetBeansProjects\\bovinoware\\src\\img\\bovino.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="244" y="38" width="354" height="54" uuid="230f12b3-6814-4090-8155-54e28dbdb8ff"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Vendas efetuadas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="10" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="244" y="5" width="70" height="20" uuid="fadcbdec-7881-4da3-b5ef-43c1919f1e5b"/>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="5" width="102" height="20" uuid="f696cf61-8e52-4d00-b99b-d78b5c786089"/>
+				<text><![CDATA[Nome do Comprador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="5" width="48" height="20" uuid="7c2afd92-c9b5-4986-bf1e-85b737ca9b86"/>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="647" y="5" width="67" height="20" uuid="deb6f8d7-3e76-4472-b2ff-310591c2b0e4"/>
+				<text><![CDATA[Data da venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="724" y="5" width="68" height="20" uuid="730a906c-6529-45ce-84a9-4bd43b9ef32d"/>
+				<text><![CDATA[Valor Venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="528" y="5" width="100" height="20" uuid="1eeb9240-9c2f-472b-b11c-333c3e1468b3"/>
+				<text><![CDATA[Raça]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="248" y="55" width="315" height="51" uuid="76f1f682-f53c-4af2-85ae-1b675827ec1c"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Vendas efetuadas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="652" y="10" width="72" height="20" uuid="55f5b045-0ef2-4f92-85dd-c47feed2b0d1"/>
+				<textFieldExpression><![CDATA[$F{dataCompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="244" y="10" width="284" height="20" uuid="3969dfc6-a31c-4ed2-8a5f-e6be71734a70"/>
+				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="10" width="130" height="20" uuid="789c13ec-2d52-4498-8552-68e10729fd00"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="724" y="10" width="78" height="20" uuid="c20fa246-23ef-4183-9ceb-7beac573cedd"/>
+				<textFieldExpression><![CDATA[$F{valorCompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="10" width="94" height="20" uuid="3fce1cfa-db3b-452f-9690-8b58393308dd"/>
+				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="528" y="10" width="119" height="20" uuid="d5f29d9a-bbe0-41b5-93ec-9e405d380205"/>
+				<textFieldExpression><![CDATA[$F{nomeraca}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
